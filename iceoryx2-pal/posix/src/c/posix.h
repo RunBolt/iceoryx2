@@ -55,7 +55,8 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <asm/signal.h>
+#include <time.h>
+#include <bits/signum.h>
 
 #if !(defined(_WIN64) || defined(_WIN32))
 struct iox2_sigaction {
