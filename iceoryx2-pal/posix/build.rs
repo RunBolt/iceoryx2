@@ -54,6 +54,7 @@ fn main() {
 
     println!("cargo:rerun-if-changed=src/c/sigaction.c");
     cc::Build::new()
+        .flag("-std=gnu99")
         .file("src/c/sigaction.c")
         .compile("libsigaction.a");
 
