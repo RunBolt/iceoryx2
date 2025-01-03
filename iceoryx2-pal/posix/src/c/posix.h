@@ -48,6 +48,7 @@
 #include <unistd.h>
 #endif
 
+#include <signal.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -56,9 +57,8 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <time.h>
-#include <signal.h>
-#include <bits/signum.h>
-#include <sched.h>
+//#include <bits/signum.h>
+//#include <sched.h>
 
 #if !(defined(_WIN64) || defined(_WIN32))
 struct iox2_sigaction {
