@@ -42,21 +42,35 @@
 #include <semaphore.h>
 #include <sys/mman.h>
 #include <sys/resource.h>
-#include <sys/select.h>
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <unistd.h>
 #endif
 
+#ifdef __linux__
+#include <linux/version.h>
+#if LINUX_VERSION_CODE <= KERNEL_VERSION(3, 10, 0)
+#include <asm/signal.h>
+#else
+#include <signal.h>
+#include <sys/select.h>
+#include <time.h>
+#endif
+#else
+#include <signal.h>
+#include <time.h>
+#if !(defined(_WIN64) || defined(_WIN32))
+#include <sys/select.h>
+#endif
+#endif
+
 #include <errno.h>
 #include <fcntl.h>
-#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <time.h>
 
 #if !(defined(_WIN64) || defined(_WIN32))
 struct iox2_sigaction {
